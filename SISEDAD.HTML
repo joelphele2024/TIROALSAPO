@@ -28,6 +28,11 @@
       background-color: #367fa9;
     }
 
+    /* Color rosa personalizado */
+    .bg-pink {
+      background-color: #ffc0cb !important; /* Rosado claro */
+    }
+
     /* Ajuste de tamaño para pantallas pequeñas */
     @media (max-width: 576px) {
       .card {
@@ -52,9 +57,9 @@
     <div class="col-12 col-sm-10 col-md-8 col-lg-6">
       <div class="card">
         <div class="card-header bg-primary text-white text-center">
-          <h4 class="mb-0">TIRO AL SAPO MASTER(45 AÑOS)</h4>
+          <h4 class="mb-0">TIRO AL SAPO MASTER (45 AÑOS)</h4>
         </div>
-        <BR>
+        <br>
         <div class="card-header bg-primary text-white text-center">
           <h4 class="mb-0">Calculadora de Edad</h4>
         </div>
@@ -103,12 +108,17 @@
     document.getElementById('edadTexto').textContent = resultado;
 
     const mensajeEdad = document.getElementById('mensajeEdad');
+
     if (años >= 45) {
-      mensajeEdad.textContent = "✅ Apto para participar.";
-      mensajeEdad.className = "text-success fw-bold fs-5";
+      mensajeEdad.innerHTML = `
+        <span class="badge bg-warning text-dark fs-6 p-2">
+          ✅ Apto para participar
+        </span>`;
     } else {
-      mensajeEdad.textContent = "❌ No puede participar.";
-      mensajeEdad.className = "text-danger fw-bold fs-5";
+      mensajeEdad.innerHTML = `
+        <span class="badge bg-pink text-dark fs-6 p-2">
+          ❌ No puede participar
+        </span>`;
     }
 
     document.getElementById('resultado').style.display = 'block';
