@@ -33,6 +33,19 @@
       background-color: #ffc0cb !important; /* Rosado claro */
     }
 
+    /* Contenedor del resultado centrado */
+    .resultado-contenido {
+      text-align: center;
+    }
+
+    /* Imagen de resultado */
+    .img-result {
+      max-height: 200px;
+      width: auto;
+      margin: 20px auto;
+      display: block;
+    }
+
     /* Ajuste de tamaño para pantallas pequeñas */
     @media (max-width: 576px) {
       .card {
@@ -57,7 +70,7 @@
     <div class="col-12 col-sm-10 col-md-8 col-lg-6">
       <div class="card">
         <div class="card-header bg-primary text-white text-center">
-          <h4 class="mb-0">TIRO AL SAPO MASTER (45 AÑOS)</h4>
+          <h4 class="mb-0">TIRO AL SAPO MASTER <br>(45 AÑOS)</h4>
         </div>
         <br>
         <div class="card-header bg-primary text-white text-center">
@@ -72,9 +85,12 @@
             <button type="button" class="btn btn-primary w-100" onclick="calcularEdad()">Calcular Edad</button>
           </form>
           <div class="mt-4" id="resultado" style="display: none;">
-            <h5 class="mt-3">Resultado:</h5>
-            <p id="edadTexto" class="text-success fw-bold fs-5"></p>
-            <p id="mensajeEdad" class="fw-bold fs-5"></p>
+            <div class="resultado-contenido">
+              <h5 class="mt-3">Resultado:</h5>
+              <p id="edadTexto" class="text-success fw-bold fs-5"></p>
+              <p id="mensajeEdad" class="fw-bold fs-5"></p>
+              <img id="imgResultado" src="" alt="Imagen resultado" class="img-result" style="display: none;">
+            </div>
           </div>
         </div>
       </div>
@@ -108,19 +124,25 @@
     document.getElementById('edadTexto').textContent = resultado;
 
     const mensajeEdad = document.getElementById('mensajeEdad');
+    const imgResultado = document.getElementById('imgResultado');
 
     if (años >= 45) {
+      // Apto
       mensajeEdad.innerHTML = `
         <span class="badge bg-warning text-dark fs-6 p-2">
           ✅ Apto para participar
         </span>`;
+      imgResultado.src = 'FELIZ.png'; // Reemplaza con la ruta real de tu imagen PNG
     } else {
+      // No apto
       mensajeEdad.innerHTML = `
         <span class="badge bg-pink text-dark fs-6 p-2">
           ❌ No puede participar
         </span>`;
+      imgResultado.src = 'TRISTE.png'; // Reemplaza con la ruta real de tu imagen PNG
     }
 
+    imgResultado.style.display = 'block';
     document.getElementById('resultado').style.display = 'block';
   }
 </script>
